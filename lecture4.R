@@ -9,7 +9,7 @@ a
 library(preprocessCore)
 
 microarray <- read.csv("data/GSE7765-GPL96_series_matrix.txt", 
-	skip=70, header=TRUE, sep="\t", row.names=1)
+	skip=69, header=TRUE, sep="\t", row.names=1)
 
 dim(microarray)
 
