@@ -1,0 +1,63 @@
+version
+Help
+help >check for updates
+version
+install.packages("preprocessCore")
+if (!require("BiocManager", quietly = TRUE))#
+    install.packages("BiocManager")#
+#
+BiocManager::install("preprocessCore")
+cd
+ls
+where()
+setwd(/Users/dwlakes/Bioinfo2021/data)
+setwd(/sers/dwlakes/Bioinfo2021/data)
+setwd(Users/dwlakes/Bioinfo2021/data)
+setwd(dwlakes/Bioinfo2021/data)
+setwd("dwlakes/Bioinfo2021")
+setwd("/dwlakes/Bioinfo2021")
+setwd("D:/dwlakes/Bioinfo2021")
+setwd("D:/Bioinfo2021")
+getwd()
+setwd("~/")
+getwd
+getwd()
+setwd("~/dwlakes/Bioinfo2021")
+setwd("~Users/dwlakes/Bioinfo2021")
+getwd()
+setwd("~Users/dwlakes/Bioinfo2021/lecture4.R")
+setwd("~/Users/dwlakes/Bioinfo2021/lecture4.R")
+setwd("D:/Users/dwlakes/Bioinfo2021/lecture4.R")
+setwd("/Bioinfo2021/lecture4.R")
+setwd("~/Bioinfo2021/lecture4.R")
+setwd("~/Bioinfo2021/lecture4.R/")
+setwd("/Users/dwlakes/Bioinfo2021")#
+if (!require("BiocManager", quietly = TRUE))    #
+	install.packages("BiocManager")#
+BiocManager::install("preprocessCore")#
+a#
+#
+library(preprocessCore)#
+#
+microarray <- read.csv("data/GSE7765-GPL96_series_matrix.txt", #
+	skip=70, header=TRUE, sep="\t", row.names=1)#
+#
+dim(microarray)#
+#
+boxplot(microarray, las = 2, cex.axis = 0.7)#
+microarrayLOGQnorm <- normalize.quantiles(microarrayLOG)#
+#
+colnames(microarrayLOGQnorm) <- colnames(microarrayLOG) #
+rownames(microarrayLOGQnorm) <- rownames(microarrayLOG) #
+#
+clusters <- hclust(dist(t(microarrayLOGQnorm)))#
+plot(clusters)#
+#
+scaledVariation <- apply(microarrayLOGQnorm,1,function(x){#
+  var(x)/mean(x)#
+ })#
+#
+plot(scaledVariation)#
+#
+highlyVariable <- names(which(scaledVariation > 1))#
+heatmap(microarrayLOGQnorm[highlyVariable,], cexRow = 0.7, cexCol=0.7)
